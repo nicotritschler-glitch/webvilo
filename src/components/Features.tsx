@@ -1,15 +1,27 @@
 import { useEffect, useRef } from 'react'
 
-const features = [
+const services = [
   {
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3" />
       </svg>
     ),
-    title: 'Webentwicklung',
-    description: 'Moderne, skalierbare Web­applikationen mit den neuesten Technologien – React, TypeScript, Node.js und mehr.',
-    color: 'bg-blue-50 text-blue-600',
+    title: 'Professionelle Website',
+    description: 'Ihr digitales Schaufenster — maßgeschneidert für Ihr Unternehmen. Klar, modern und auf Ihre Wunschkunden ausgerichtet.',
+    accent: 'bg-primary-50 text-primary-700',
+    border: 'border-primary-100 hover:border-primary-200',
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+      </svg>
+    ),
+    title: 'Lokale Suchoptimierung',
+    description: 'Wenn jemand in Freiburg oder im Schwarzwald sucht — werden Sie gefunden. Lokales SEO, das Kunden zu Ihnen bringt.',
+    accent: 'bg-forest-50 text-forest-700',
+    border: 'border-forest-100 hover:border-forest-200',
   },
   {
     icon: (
@@ -18,28 +30,20 @@ const features = [
       </svg>
     ),
     title: 'Mobile First',
-    description: 'Responsive Design, das auf jedem Gerät perfekt aussieht und funktioniert – vom Smartphone bis zum Desktop.',
-    color: 'bg-purple-50 text-purple-600',
+    description: 'Über 70 % Ihrer Kunden besuchen Ihre Website vom Smartphone. Wir bauen Seiten, die auf jedem Gerät überzeugend wirken.',
+    accent: 'bg-amber-50 text-amber-700',
+    border: 'border-amber-100 hover:border-amber-200',
   },
   {
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
       </svg>
     ),
-    title: 'Performance',
-    description: 'Lighthouse-Score 90+ garantiert. Optimierte Lade­zeiten und Core Web Vitals für maximale Konversionsrate.',
-    color: 'bg-amber-50 text-amber-600',
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-      </svg>
-    ),
-    title: 'Accessibility',
-    description: 'WCAG 2.1 konform. Wir bauen Webanwendungen, die für alle Menschen zugänglich sind – inklusive Screen­reader-Unterstützung.',
-    color: 'bg-green-50 text-green-600',
+    title: 'Persönlicher Support',
+    description: 'Kein anonymes Ticket-System. Sie haben einen direkten Ansprechpartner aus der Region — schnell, zuverlässig, auf Augenhöhe.',
+    accent: 'bg-violet-50 text-violet-700',
+    border: 'border-violet-100 hover:border-violet-200',
   },
 ]
 
@@ -72,51 +76,55 @@ export default function Features() {
   return (
     <section id="services" ref={sectionRef} className="py-24 bg-gray-50" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
+
         <div className="text-center mb-16 opacity-0" data-animate>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-800 text-sm font-medium mb-4">
             Was wir bieten
           </span>
           <h2 id="services-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Unsere Services
+            Alles, was Ihr Unternehmen<br className="hidden sm:block" /> digital braucht
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600">
-            Von der Idee bis zur Produktion — wir begleiten Ihr Projekt ganzheitlich und liefern messbare Ergebnisse.
+          <p className="max-w-2xl mx-auto text-lg text-gray-500">
+            Von der ersten Idee bis zum Go-Live — wir begleiten Sie Schritt für Schritt und liefern eine Website, die wirklich Kunden bringt.
           </p>
         </div>
 
-        {/* Feature cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
+          {services.map((s) => (
             <article
-              key={feature.title}
+              key={s.title}
               data-animate
-              className="opacity-0 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+              className={`opacity-0 bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border ${s.border}`}
             >
-              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${feature.color} mb-5`}>
-                {feature.icon}
+              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${s.accent} mb-5`}>
+                {s.icon}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{s.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{s.description}</p>
             </article>
           ))}
         </div>
 
-        {/* About blurb */}
-        <div id="about" className="mt-20 bg-white rounded-3xl p-10 md:p-16 shadow-sm border border-gray-100 opacity-0" data-animate>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">Über WebVilo</h2>
-            <p className="text-gray-600 leading-relaxed text-lg mb-6">
-              WebVilo ist ein junges, leidenschaftliches Entwicklungsstudio mit dem Ziel, Unternehmen aller Größen mit erstklassiger Software zu versorgen. Wir glauben daran, dass gutes Design und sauberer Code Hand in Hand gehen.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {['React', 'TypeScript', 'Node.js', 'TailwindCSS', 'PostgreSQL', 'Docker'].map((tech) => (
-                <span key={tech} className="px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 text-sm font-medium">
-                  {tech}
-                </span>
-              ))}
+        {/* Stats row */}
+        <div
+          data-animate
+          className="opacity-0 mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+          aria-label="Kennzahlen"
+        >
+          {[
+            { value: '2–4 Wochen', label: 'bis zur fertigen Website' },
+            { value: '90+',        label: 'Google Lighthouse Score' },
+            { value: '48h',        label: 'Antwortzeit garantiert' },
+            { value: '100 %',      label: 'regional & persönlich' },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm"
+            >
+              <div className="text-2xl font-bold text-primary-800 mb-1">{stat.value}</div>
+              <div className="text-sm text-gray-500">{stat.label}</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
